@@ -1,17 +1,17 @@
 package hu.example.fodorsz.myfirstapp;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
 
-public class MyActivity extends ActionBarActivity {
+public class MyActivity extends Activity {
 
     public static final String EXTRA_MESSAGE = "hu.example.fodorsz.myfirstapp.MESSAGE";
 

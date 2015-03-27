@@ -1,13 +1,13 @@
 package hu.example.fodorsz.myfirstapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class DisplayMessageActivity extends ActionBarActivity {
+public class DisplayMessageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
 
         TextView textView = new TextView(this);
-        textView.setTextSize(40);
+        textView.setTextSize(72);
         textView.setText(message);
 
         setContentView(textView);
