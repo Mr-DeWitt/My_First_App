@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hu.example.fodorsz.myfirstapp.FragmentActivity">
+
+    <!--<fragment-->
+    <!--android:name="hu.example.fodorsz.myfirstapp.fragments.HeadlineFragment"-->
+    <!--android:id="@+id/headlines_fragment"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"/>-->
+
+    <!--<fragment-->
+    <!--android:name="hu.example.fodorsz.myfirstapp.fragments.ArticleFragment"-->
+    <!--android:id="@+id/article_fragment"-->
+    <!--android:layout_weight="2"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent" />-->
+
+</FrameLayout>

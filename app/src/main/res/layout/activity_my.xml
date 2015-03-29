@@ -4,12 +4,21 @@
     android:orientation="horizontal"
     android:paddingTop="?android:attr/actionBarSize">
 
-<EditText
+    <EditText
         android:id="@+id/edit_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:hint="@string/edit_message" />
+
+    <Button
+        android:id="@+id/fragmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:onClick="showFragmentsActivity"
+        android:text="Fragments" />
 
     <Button
         android:layout_width="wrap_content"

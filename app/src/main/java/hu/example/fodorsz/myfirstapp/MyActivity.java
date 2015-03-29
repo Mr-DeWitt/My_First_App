@@ -21,7 +21,6 @@ public class MyActivity extends Activity {
         setContentView(R.layout.activity_my);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present!
@@ -66,6 +65,11 @@ public class MyActivity extends Activity {
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    public void showFragmentsActivity(View view) {
+        Intent intent = new Intent(this, FragmentActivity.class);
         startActivity(intent);
     }
 }
