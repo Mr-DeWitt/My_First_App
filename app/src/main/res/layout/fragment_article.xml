@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FF0000"
     android:clickable="true"
+    android:configChanges="keyboardHidden|orientation|screenSize"
     tools:context="hu.example.fodorsz.myfirstapp.fragments.ArticleFragment">
 
     <!-- TODO: Update blank fragment layout -->

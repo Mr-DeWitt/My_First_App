@@ -1,6 +1,7 @@
 package hu.example.fodorsz.myfirstapp;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 
 import hu.example.fodorsz.myfirstapp.fragments.ArticleFragment;
@@ -11,6 +12,7 @@ public class FragmentActivity extends Activity implements HeadlineFragment.OnHea
 
     ArticleFragment articleFragment;
     HeadlineFragment headlineFragment;
+    Fragment actualFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +20,15 @@ public class FragmentActivity extends Activity implements HeadlineFragment.OnHea
         setContentView(R.layout.activity_fragment);
 
         if (findViewById(R.id.fragment_container) != null) {
-            headlineFragment = new HeadlineFragment();
             articleFragment = new ArticleFragment();
+            headlineFragment = new HeadlineFragment();
+
+            if (getFragmentManager().findFragmentById(R.id.article_fragment) != null) {
+                getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.article_fragment)).commit();
+            }
+            if (getFragmentManager().findFragmentById(R.id.headline_fragment) != null) {
+                getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.headline_fragment)).commit();
+            }
 
             getFragmentManager()
                     .beginTransaction()
@@ -29,8 +38,20 @@ public class FragmentActivity extends Activity implements HeadlineFragment.OnHea
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+    @Override
     public void touched() { //TODO: kiszervezni ezeket külön handler osztályokba, amiket screen size alapján lekérhetünk egy factory-tól => large handler, land handler, stb...
-        if (articleFragment == null) return;
+        if (articleFragment == null || articleFragment.isAdded())
+            return; //TODO: is added kényszer megoldás, és igazából nem is megoldás => tehát csak kényszer :)
 
         getFragmentManager()
                 .beginTransaction()
@@ -41,7 +62,7 @@ public class FragmentActivity extends Activity implements HeadlineFragment.OnHea
 
     @Override
     public void articleTouched() {
-        if (headlineFragment == null) return;
+        if (headlineFragment == null || headlineFragment.isAdded()) return;
 
         getFragmentManager()
                 .beginTransaction()

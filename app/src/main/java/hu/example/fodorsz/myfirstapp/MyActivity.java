@@ -4,16 +4,22 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 
 public class MyActivity extends Activity {
 
     public static final String EXTRA_MESSAGE = "hu.example.fodorsz.myfirstapp.MESSAGE";
+    private int CAPTURE_PICTURE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +77,26 @@ public class MyActivity extends Activity {
     public void showFragmentsActivity(View view) {
         Intent intent = new Intent(this, FragmentActivity.class);
         startActivity(intent);
+    }
+
+    public void intentForPicture(View view) {
+        Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(captureIntent, CAPTURE_PICTURE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAPTURE_PICTURE_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+                BitmapDrawable background = new BitmapDrawable(getResources(), (Bitmap) data.getExtras().get("data"));
+
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    layout.setBackgroundDrawable(background);
+                } else {
+                    layout.setBackground(background);
+                }
+            }
+        }
     }
 }
